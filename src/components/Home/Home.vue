@@ -2,14 +2,16 @@
   <div id="body">
     <h1 id="title"><strong>Github</strong> <i>Search</i></h1>
 
-    <form id="div_search_bar" v-on:submit.prevent>
+    <form id="div_search_bar" @submit="searchUser" v-on:submit.prevent>
       <input
         type="search"
         name="search_box"
         title="search_box"
         id="search_box"
+        v-model="username"
+        required
       />
-      <button id="button_search">
+      <button id="button_search" type="submit">
         <font-awesome-icon icon="search" style="color: white" size="lg" />
       </button>
     </form>
@@ -17,7 +19,18 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      username: '',
+    }
+  },
+  methods: {
+    searchUser: function() {
+      this.$router.push({ name: 'result', params: { username: this.username } })
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -61,7 +74,7 @@ export default {}
 }
 
 #button_search:hover {
-  background-color: #2c3e50;
+  background-color: #757575;
 }
 
 @media screen and (max-width: 600px) {
