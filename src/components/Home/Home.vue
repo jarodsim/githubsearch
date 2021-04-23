@@ -2,7 +2,7 @@
   <div id="body">
     <h1 id="title"><strong>Github</strong> <i>Search</i></h1>
 
-    <form id="div_search_bar" @submit="searchUser" v-on:submit.prevent>
+    <form id="div_search_bar" @submit="redirectToResult" v-on:submit.prevent>
       <input
         type="search"
         name="search_box"
@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    searchUser: function() {
+    redirectToResult: function() {
       this.$router.push({ name: 'result', params: { username: this.username } })
     },
   },
